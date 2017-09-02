@@ -330,6 +330,9 @@ done
 
 __CMakeExtraArgs="$__CMakeExtraArgs -DFEATURE_DISTRO_AGNOSTIC_SSL=$__PortableBuild"
 __CMakeExtraArgs="$__CMakeExtraArgs -DCMAKE_STATIC_LIB_LINK=$__StaticLibLink"
+if [[ $__BuildOS == "OSX" && $__HostOS == "OSX" ]]; then
+    __CMakeExtraArgs="$__CMakeExtraArgs -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl/"
+fi
 
 # Set cross build
 case $CPUName in
